@@ -25,3 +25,15 @@ class ProviderEventManager implements IProviderEventManager {
     }
   }
 }
+
+class ConcreteObserverA implements IObserverEventListener {
+  update(providerEventManager: IProviderEventManager): void {
+    console.log("ConcreteObserverA: Reacted to the event.");
+  }
+}
+
+const subject = new ProviderEventManager();
+
+const observer1 = new ConcreteObserverA();
+subject.attach(observer1);
+subject.notify();
